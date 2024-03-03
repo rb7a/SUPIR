@@ -19,6 +19,7 @@ from sgm.modules.diffusionmodules.sampling import _sliding_windows
 parser = argparse.ArgumentParser()
 parser.add_argument("--ip", type=str, default='127.0.0.1')
 parser.add_argument("--port", type=int, default='6688')
+parser.add_argument("--share", action='store_true', default=False)
 parser.add_argument("--no_llava", action='store_true', default=False)
 parser.add_argument("--use_image_slider", action='store_true', default=False)
 parser.add_argument("--log_history", action='store_true', default=False)
@@ -31,6 +32,7 @@ parser.add_argument("--local_prompt", action='store_true', default=False)
 args = parser.parse_args()
 server_ip = args.ip
 server_port = args.port
+share_link = args.share
 use_llava = not args.no_llava
 
 if torch.cuda.device_count() >= 2:
@@ -336,4 +338,4 @@ with block:
                          outputs=[edm_steps, s_cfg, s_stage2, s_stage1, s_churn, s_noise, a_prompt, n_prompt,
                                   color_fix_type, linear_CFG, linear_s_stage2, spt_linear_CFG, spt_linear_s_stage2])
     submit_button.click(fn=submit_feedback, inputs=[event_id, fb_score, fb_text], outputs=[fb_text])
-block.launch(server_name=server_ip, server_port=server_port)
+block.launch(server_name=server_ip, server_port=server_port, share=share_link)
