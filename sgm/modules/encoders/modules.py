@@ -461,8 +461,13 @@ class FrozenCLIPEmbedder(AbstractEmbModel):
     ):  # clip-vit-base-patch32
         super().__init__()
         assert layer in self.LAYERS
-        self.tokenizer = CLIPTokenizer.from_pretrained(version if SDXL_CLIP1_PATH is None else SDXL_CLIP1_PATH)
-        self.transformer = CLIPTextModel.from_pretrained(version if SDXL_CLIP1_PATH is None else SDXL_CLIP1_PATH)
+        #self.tokenizer = CLIPTokenizer.from_pretrained(version if SDXL_CLIP1_PATH is None else SDXL_CLIP1_PATH)
+        #self.transformer = CLIPTextModel.from_pretrained(version if SDXL_CLIP1_PATH is None else SDXL_CLIP1_PATH)
+        #self.clip_text_config = CLIPTextConfig.from_pretrained("openai/clip-vit-large-patch14")
+        #self.tokenizer = CLIPTokenizer.from_pretrained(version)
+        self.tokenizer = None
+        #self.transformer = CLIPTextModel(self.clip_text_config)
+        self.transformer = None
         self.device = device
         self.max_length = max_length
         if freeze:
