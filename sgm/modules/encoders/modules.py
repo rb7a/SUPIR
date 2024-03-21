@@ -470,8 +470,8 @@ class FrozenCLIPEmbedder(AbstractEmbModel):
         self.transformer = None
         self.device = device
         self.max_length = max_length
-        if freeze:
-            self.freeze()
+        #if freeze:
+        #    self.freeze()
         self.layer = layer
         self.layer_idx = layer_idx
         self.return_pooled = always_return_pooled
