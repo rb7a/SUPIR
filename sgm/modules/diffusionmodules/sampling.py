@@ -1,5 +1,7 @@
 """
     Partially ported from https://github.com/crowsonkb/k-diffusion/blob/master/k_diffusion/sampling.py
+    delete from k_diffusion.sampling import get_sigmas_karras, BrownianTreeNoiseSampler 
+    delete 375 class SubstepSampler(EulerAncestralSampler):, move downward class RestoreDPMPP2MSampler(DPMPP2MSampler):; move downward class TiledRestoreDPMPP2MSampler(RestoreDPMPP2MSampler):
 """
 
 
@@ -8,7 +10,8 @@ from typing import Dict, Union
 import torch
 from omegaconf import ListConfig, OmegaConf
 from tqdm import tqdm
-
+#from comfy.k_diffusion.sampling import BrownianTreeNoiseSampler, get_sigmas_karras
+#from comfy.k_diffusion.sampling import BrownianTreeNoiseSampler, get_sigmas_karras
 from ...modules.diffusionmodules.sampling_utils import (
     get_ancestral_step,
     linear_multistep_coeff,
@@ -17,10 +20,11 @@ from ...modules.diffusionmodules.sampling_utils import (
     to_sigma,
 )
 from ...util import append_dims, default, instantiate_from_config
-from k_diffusion.sampling import get_sigmas_karras, BrownianTreeNoiseSampler
+from k_diffusion.sampling import get_sigmas_karras, BrownianTreeNoiseSampler 
 
 DEFAULT_GUIDER = {"target": "sgm.modules.diffusionmodules.guiders.IdentityGuider"}
-
+#import comfy.model_management
+#device = comfy.model_management.get_torch_device()
 
 class BaseDiffusionSampler:
     def __init__(
@@ -524,7 +528,7 @@ def to_d_center(denoised, x_center, x):
     d_center = d_center / d_center.view(x.shape[0], -1).norm(dim=1).view(-1, 1)
     return d_center.view(denoised.shape)
 
-
+#import comfy.utils
 class RestoreEDMSampler(SingleStepDiffusionSampler):
     def __init__(
         self, s_churn=0.0, s_tmin=0.0, s_tmax=float("inf"), s_noise=1.0, restore_cfg=4.0,
