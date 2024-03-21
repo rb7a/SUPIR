@@ -73,8 +73,10 @@ import SUPIR.utils.devices as devices
 try:
     import xformers
     import xformers.ops
-except ImportError:
-    pass
+    XFORMERS_IS_AVAILABLE = True
+except:
+    XFORMERS_IS_AVAILABLE = False
+    print("no module 'xformers'. Processing without...")
 
 sd_flag = True
 
