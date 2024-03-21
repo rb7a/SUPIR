@@ -6,7 +6,6 @@ from sgm.modules.distributions.distributions import DiagonalGaussianDistribution
 import random
 from SUPIR.utils.colorfix import wavelet_reconstruction, adaptive_instance_normalization
 from pytorch_lightning import seed_everything
-from ...SUPIR.utils.tilevae import VAEHook
 from torch.nn.functional import interpolate
 from SUPIR.utils.tilevae import VAEHook
 
