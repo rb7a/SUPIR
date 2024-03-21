@@ -10,6 +10,14 @@ from einops import rearrange, repeat
 from packaging import version
 from torch import nn
 
+class Conv2d(torch.nn.Conv2d):
+    def reset_parameters(self):
+        return None
+    
+class Linear(torch.nn.Linear):
+    def reset_parameters(self):
+        return None
+
 if version.parse(torch.__version__) >= version.parse("2.0.0"):
     SDP_IS_AVAILABLE = True
     from torch.backends.cuda import SDPBackend, sdp_kernel
