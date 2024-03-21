@@ -33,6 +33,8 @@ from ...util import (
 )
 
 from CKPT_PTH import SDXL_CLIP1_PATH, SDXL_CLIP2_CKPT_PTH
+#import comfy.model_management
+#device = comfy.model_management.get_torch_device()
 
 class AbstractEmbModel(nn.Module):
     def __init__(self):
