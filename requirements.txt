@@ -39,3 +39,5 @@ wandb==0.14.0
 webdataset==0.2.48
 #xformers>=0.0.20
 facexlib==0.3.0
+k-diffusion==0.1.1.post1
+diffusers==0.16.1
