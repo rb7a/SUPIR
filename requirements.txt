@@ -31,7 +31,7 @@ tokenizers==0.13.3
 #torch>=2.1.0
 #torchvision>=0.16.0
 tqdm==4.65.0
-transformers==4.28.1
+#transformers==4.28.1
 #triton==2.1.0
 urllib3==1.26.15
 uvicorn==0.21.1
@@ -40,4 +40,4 @@ webdataset==0.2.48
 #xformers>=0.0.20
 facexlib==0.3.0
 k-diffusion==0.1.1.post1
-diffusers==0.16.1
+#diffusers==0.16.1
